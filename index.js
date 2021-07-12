@@ -29,8 +29,14 @@ app.post('/users', (req, res) => {
     users.push(newUser)
     res.json(users)
 })
+app.put('/users/1', (req, res) => {
+  res.send(user.filter(user => user.name)
+  res.json(users)
+})
 
-
+app.delete('/users/1',(req, res) => {
+  res.send('DELETE request to homepage')
+})
 
 /* END - create routes here */
 
