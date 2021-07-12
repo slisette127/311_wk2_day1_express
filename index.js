@@ -1,3 +1,4 @@
+app.use(express.json());
 
 const express = require('express')
 const app = express()
@@ -30,7 +31,7 @@ app.post('/users', (req, res) => {
     res.json(users)
 })
 app.put('/users/1', (req, res) => {
-  res.send(user.filter(user => user.name)
+  res.send(users[0].name = "Trey MacDougal");
   res.json(users)
 })
 
