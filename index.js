@@ -21,14 +21,12 @@ app.get('/users/:id', (req, res) => {
 })
 app.post('/users', (req, res) => {
   const newUser = {
-    "_id": 6,
-    "name": "Frank Zappa",
-    "occupation": "musician",
-    "avatar": "https://upload.wikimedia.org/wikipedia/commons/0/02/Frank_Zappa_1973_2.JPG"
+    "_id": req.body.id,
+    "name": req.body.name,
+    "occupation": req.body.occupation,
+    "avatar": req.body.avatar
     }
-    if (!newUser.id) {
-      res.status(400).json({msg:'new user needs id'})
-    } 
+   
     users.push(newUser)
     res.json(users)
 })
