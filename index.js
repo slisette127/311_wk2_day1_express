@@ -30,14 +30,25 @@ app.post('/users', (req, res) => {
     users.push(newUser)
     res.json(users)
 })
-app.put('/users/1', (req, res) => {
-  users[0].name = "Trey MacDougal";
-  res.json(users);
+app.put('/users/:id', (req, res) => {
+  const updateUser = req.body
+  users.forEach(user => {
+    if (user._id === parseInt(req.params.id))
+    user.name = updateUser.name, 
+    user.occupation = updateUser.occupation
+  })
+    res.json(users);
 })
 
-app.delete('/users/1',(req, res) => {
-  users.shift()
-  res.json(users)
+app.delete('/users/:id',(req, res) => {
+  const found = users.some(user => user._id == req.params.id)
+  if (found) {
+    res.json({
+      isActive: 'false',
+      users: users.filter(user => user._id == parseInt(req.params.id))
+    })
+  }
+ 
 })
 
 /* END - create routes here */
