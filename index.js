@@ -1,8 +1,10 @@
-app.use(express.json());
+
 
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 4000
+
+app.use(express.json());
 
 const { users } = require('./state')
 
@@ -31,12 +33,13 @@ app.post('/users', (req, res) => {
     res.json(users)
 })
 app.put('/users/1', (req, res) => {
-  res.send(users[0].name = "Trey MacDougal");
-  res.json(users)
+  users[0].name = "Trey MacDougal";
+  res.json(users);
 })
 
 app.delete('/users/1',(req, res) => {
-  res.send('DELETE request to homepage')
+  users.shift()
+  res.json(users)
 })
 
 /* END - create routes here */
